@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 t2 = datetime.now()
 
-filepath = "Analyse_Pulse_Signal/20171121_log.csv"
+filepath = "main/20171121_log.csv"
 
 data = pd.read_csv(filepath, parse_dates=[0])
 
