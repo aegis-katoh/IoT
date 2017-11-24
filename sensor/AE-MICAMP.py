@@ -10,7 +10,7 @@ writer = csv.writer(f)
 while True:
 	mic = MCP3008(channel=0)
 	voltage = 3.3*mic.value
-	time = datetime.now().strftime("%X")
+	time = datetime.now().strftime("%H:%M:%S.%f")
 	print(time, voltage)
 	writer.writerow([time, voltage])
 	
