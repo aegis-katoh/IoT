@@ -1,6 +1,7 @@
 # This program is written in Python3
 # Author : Masazumi Katoh
-# coding UTF-8
+# coding : UTF-8
+# Last Update : 2017/11/22
 
 # to use Raspberry Pi's GPIO
 import RPi.GPIO as GPIO
@@ -16,7 +17,8 @@ import csv
 # to run function per fixed time
 import signal
 
-# sampling frequency [Hz]
+# initial setting
+# sampling rate [Hz]
 sampling_rate = 5
 # sampling period [sec]
 sampling_period = timedelta(seconds = 1. / sampling_rate)
@@ -96,9 +98,6 @@ def save_to_csv(dum1, dum2):
 	global count
 	global save_period
 
-	record_time = datetime.now().strftime("%X")
-	product_rate = calc_product_rate(count, save_period)
-
 	# open csv file to record data
 	if path.exists(logfile, ):
 		f = open(logfile, "a")
@@ -107,6 +106,9 @@ def save_to_csv(dum1, dum2):
 		f = open(logfile, "a")
 		writer = csv.writer(f)
 		writer.writerow(["Time", "Count", "Rate"])
+
+	record_time = datetime.now().strftime("%X")
+	product_rate = calc_product_rate(count, save_period)
 
 	# record data
 	writer.writerow([record_time, count, product_rate])

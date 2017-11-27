@@ -9,9 +9,6 @@ def save_to_csv(dum1, dum2):
 	global count
 	global save_period
 
-	record_time = datetime.now().strftime("%X")
-	product_rate = calc_product_rate(count, save_period)
-
 	# open csv file to record data
 	if path.exists(logfile, ):
 		f = open(logfile, "a")
@@ -20,6 +17,9 @@ def save_to_csv(dum1, dum2):
 		f = open(logfile, "a")
 		writer = csv.writer(f)
 		writer.writerow(["Time", "Count", "Rate"])
+
+	record_time = datetime.now().strftime("%X")
+	product_rate = calc_product_rate(count, save_period)
 
 	# record data
 	writer.writerow([record_time, count, product_rate])
