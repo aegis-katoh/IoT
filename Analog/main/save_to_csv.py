@@ -1,9 +1,12 @@
 # This program is written in Python3
 
-from datetime import datetime
 from csv import writer
+from datetime import datetime
 
-def save_to_csv(value, flag):
-	record_time = datetime.now().strftime("%X")
-
-	writer.writerow([record_time, count, product_rate])
+def open_csv_first(logfile):
+	# open csv file to record data
+	if not path.exists(logfile, ):
+		f = open(logfile, "a")
+		writer = writer(f)
+		writer.writerow(["Time", "Value", "Over Threshold"])
+		f.close()

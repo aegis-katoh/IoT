@@ -1,4 +1,5 @@
 MacBookPro
+open huge.csv 0:00:00.000051
 writer 0:00:00.000004
 write to csv 0:00:00.000011
 close f1 0:00:00.000093

@@ -2,8 +2,8 @@
 
 from goipzero import MCP3008
 
-def get_sensor_value(A_PIN):
-	input_value = MCP3008(channel = A_PIN)
-	value = input_value.value
+def get_sensor_value(channel):
+	input_value = MCP3008(channel = channel)
+	present_value = input_value.value
 
-	return value
+	return present_value

@@ -2,8 +2,8 @@
 
 def judge_threshold(value, threshold):
 	if (value => threshold):
-		flag = 1
+		threshold_flag = True
 	else:
-		flag = 0
+		threshold_flag = False
 
-	return flag
+	return threshold_flag
