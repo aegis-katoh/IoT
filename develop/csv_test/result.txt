@@ -1,10 +1,12 @@
 MacBookPro
-open huge.csv 0:00:00.000051
 writer 0:00:00.000004
-close f1 0:00:00.000025
-open test.csv 0:00:00.000032
+write to csv 0:00:00.000011
+close f1 0:00:00.000093
+total f1 0:00:00.000159
+open test.csv 0:00:00.000047
 writer 0:00:00.000003
-close f2 0:00:00.000006
+close f2 0:00:00.000008
+total f2 0:00:00.000058
 
 Raspberry Pi 0
 open huge.csv 0:00:00.000758
