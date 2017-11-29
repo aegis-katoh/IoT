@@ -1,0 +1,6 @@
+open huge.csv 0:00:00.000051
+writer 0:00:00.000004
+close f1 0:00:00.000025
+open test.csv 0:00:00.000032
+writer 0:00:00.000003
+close f2 0:00:00.000006
