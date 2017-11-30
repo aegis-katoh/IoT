@@ -4,7 +4,7 @@
 # Last Update : 2017/11/30
 
 # to use MCP3008
-from goipzero import MCP3008
+from gpiozero import MCP3008
 # to check whether path exists or not
 from os import path
 # to get date and time
@@ -45,7 +45,7 @@ def open_csv_first(logfile):
 	# open csv file to record data
 	if not path.exists(logfile, ):
 		f = open(logfile, "a")
-		writer = csv.writer(f)
+		writer = writer(f)
 		writer.writerow(["Time", "Value", "Over Threshold"])
 		f.close()
 
@@ -53,7 +53,7 @@ def get_sensor_value(channel, value_list, length):
 	input_value = MCP3008(channel = channel)
 	present_value = input_value.value
 
-	for i in range(lenght - 1):
+	for i in range(length - 1):
 		value_list[i] = value_list[i+1]
 
 	value_list[length - 1] = present_value
@@ -66,7 +66,7 @@ def smoothing(value_list, length):
 	return smoothed_value
 
 def judge_threshold(smoothed_value, threshold):
-	if (value => threshold):
+	if (smoothed_value <= threshold):
 		threshold_flag = True
 	else:
 		threshold_flag = False
@@ -84,7 +84,7 @@ def calc_timedelta(standard_time, sampling_period):
 def write_to_csv(logfile, smoothed_value, threshold_flag):
 	# open csv file to record data
 	f = open(logfile, "a")
-	writer = writer(f)
+	#writer = writer(f)
 	record_time = datetime.now().strftime("%X")
 	writer.writerow([record_time, smoothed_value, threshold_flag])
 	f.close()
@@ -95,7 +95,7 @@ open_csv_first(logfile)
 standard_time = datetime.now()
 
 while True:
-	value_list = get_sensor_value(channel, value_list)
+	value_list = get_sensor_value(channel, value_list, length)
 	smoothed_value = smoothing(value_list, length)
 	threshold_flag = judge_threshold(smoothed_value, threshold)
 	write_to_csv(logfile, smoothed_value, threshold_flag)
