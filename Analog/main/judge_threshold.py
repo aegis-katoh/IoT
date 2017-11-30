@@ -1,6 +1,6 @@
 # This program is written in Python3
 
-def judge_threshold(value, threshold):
+def judge_threshold(smoothed_value, threshold):
 	if (value => threshold):
 		threshold_flag = True
 	else:
