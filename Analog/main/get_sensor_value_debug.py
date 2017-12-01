@@ -23,3 +23,5 @@ def get_sensor_value(channel, value_list, length):
 	print("present :", t5 - t4)
 
 	return value_list
+
+get_sensor_value(0, [0,0,0,0,0,0], 6)
