@@ -84,7 +84,7 @@ def calc_timedelta(standard_time, sampling_period):
 def write_to_csv(logfile, smoothed_value, threshold_flag):
 	# open csv file to record data
 	f = open(logfile, "a")
-	#writer = writer(f)
+	writer = writer(f)
 	record_time = datetime.now().strftime("%X")
 	writer.writerow([record_time, smoothed_value, threshold_flag])
 	f.close()
