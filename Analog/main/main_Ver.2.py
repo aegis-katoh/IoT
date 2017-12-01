@@ -1,7 +1,8 @@
 # This program is written in Python3
 # Author : Masazumi Katoh
 # coding : UTF-8
-# Last Update : 2017/11/30
+# Last Update : 2017/12/1
+# faster than Ver.1
 
 # to use MCP3008
 from gpiozero import MCP3008
