@@ -20,7 +20,7 @@ import signal
 # initial setting
 # sampling rate [Hz]
 # maximum rate is 60[Hz] @ Raspberry Pi 3
-sampling_rate = 2
+sampling_rate = 60
 # sampling period [sec]
 sampling_period = timedelta(seconds = 1. / sampling_rate)
 # length of value list
