@@ -3,6 +3,8 @@
 from gpiozero import MCP3008
 from datetime import datetime
 
+V0 = 3.3
+
 def get_sensor_value(channel, value_list, length):
 	t1 = datetime.now()
 	input_value = MCP3008(channel = channel)
