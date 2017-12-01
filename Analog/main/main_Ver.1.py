@@ -38,6 +38,8 @@ logfile = date + "_log.csv"
 
 # channel to use MCP3008
 channel = 0
+# voltage range [V]
+V0 = 3.3
 
 """
 def open_csv_first(logfile):
@@ -51,7 +53,7 @@ def open_csv_first(logfile):
 
 def get_sensor_value(channel, value_list, length):
 	input_value = MCP3008(channel = channel)
-	present_value = input_value.value
+	present_value = V0 * input_value.value
 
 	for i in range(length - 1):
 		value_list[i] = value_list[i+1]
