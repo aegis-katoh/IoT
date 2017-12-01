@@ -64,7 +64,8 @@ def get_sensor_value(channel, value_list, length):
 	return value_list
 
 def smoothing(value_list, length):
-	smoothed_value = float("%.3f" %(sum(value_list) / length))
+	smoothed_value = sum(value_list) / length
+
 	return smoothed_value
 
 def judge_threshold(smoothed_value, threshold):
@@ -94,8 +95,8 @@ def write_to_csv(logfile, smoothed_value, threshold_flag):
 		writer.writerow(["Time", "Value", "Over Threshold"])
 
 	record_time = datetime.now().strftime("%H:%M:%S.%f")
-	writer.writerow([record_time, smoothed_value, threshold_flag])
-	print(record_time, smoothed_value, threshold_flag)
+	writer.writerow([record_time, "%.3f" %(smoothed_value), threshold_flag])
+	print(record_time, "%.3f" %(smoothed_value), threshold_flag)
 
 	f.close()
 
