@@ -79,9 +79,8 @@ def open_csv_first(logfile):
 
 def write_to_csv(logfile, smoothed_value, threshold_flag):
 	# open csv file to record data
-	writer.writerow(["Time", "Value", "Over Threshold"])
-
-	writer.writerow([datetime.now().strftime("%H:%M:%S.%f"), "%.3f" %(smoothed_value), threshold_flag])
+	f = open(logfile, "a")
+	csv.writer(f).writerow([datetime.now().strftime("%H:%M:%S.%f"), "%.3f" %(smoothed_value), threshold_flag])
 	# print(record_time, "%.3f" %(smoothed_value), threshold_flag)
 
 	f.close()
