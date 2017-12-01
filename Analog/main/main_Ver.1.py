@@ -96,7 +96,7 @@ def write_to_csv(logfile, smoothed_value, threshold_flag):
 
 	record_time = datetime.now().strftime("%H:%M:%S.%f")
 	writer.writerow([record_time, "%.3f" %(smoothed_value), threshold_flag])
-	# print(record_time, "%.3f" %(smoothed_value), threshold_flag)
+	print(record_time, "%.3f" %(smoothed_value), threshold_flag)
 
 	f.close()
 
