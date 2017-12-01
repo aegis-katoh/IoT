@@ -43,7 +43,8 @@ channel = 0
 V0 = 3.3
 
 def get_sensor_value(channel, value_list, length):
-	present_value = V0 * MCP3008(channel = channel).value
+	input_value = MCP3008(channel = channel)
+	present_value = V0 * input_value.value
 
 	for i in range(length - 1):
 		value_list[i] = value_list[i+1]
