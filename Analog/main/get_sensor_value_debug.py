@@ -1,6 +1,6 @@
 # This program is written in Python3
 
-from goipzero import MCP3008
+from gpiozero import MCP3008
 from datetime import datetime
 
 def get_sensor_value(channel, value_list, length):
