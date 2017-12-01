@@ -42,16 +42,6 @@ channel = 0
 # voltage range [V]
 V0 = 3.3
 
-"""
-def open_csv_first(logfile):
-	# open csv file to record data
-	if not path.exists(logfile, ):
-		f = open(logfile, "a")
-		writer = writer(f)
-		writer.writerow(["Time", "Value", "Over Threshold"])
-		f.close()
-"""
-
 def get_sensor_value(channel, value_list, length):
 	input_value = MCP3008(channel = channel)
 	present_value = V0 * input_value.value
