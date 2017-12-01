@@ -22,8 +22,6 @@ import signal
 sampling_rate = 10
 # sampling period [sec]
 sampling_period = timedelta(seconds = 1. / sampling_rate)
-# save period [sec]
-save_period = 10
 # length of value list
 length = 6
 # list to save sensor values
@@ -108,4 +106,5 @@ while True:
 	threshold_flag = judge_threshold(smoothed_value, threshold)
 	write_to_csv(logfile, smoothed_value, threshold_flag)
 	wait_time = sampling_period.total_seconds() - calc_timedelta(standard_time, sampling_period)
+	print("wait time :", wait_time)
 	sleep(wait_time)
