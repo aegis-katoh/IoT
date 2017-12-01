@@ -41,6 +41,7 @@ logfile = date + "_log.csv"
 # channel to use MCP3008
 channel = 0
 
+"""
 def open_csv_first(logfile):
 	# open csv file to record data
 	if not path.exists(logfile, ):
@@ -48,6 +49,7 @@ def open_csv_first(logfile):
 		writer = writer(f)
 		writer.writerow(["Time", "Value", "Over Threshold"])
 		f.close()
+"""
 
 def get_sensor_value(channel, value_list, length):
 	input_value = MCP3008(channel = channel)
@@ -83,13 +85,18 @@ def calc_timedelta(standard_time, sampling_period):
 
 def write_to_csv(logfile, smoothed_value, threshold_flag):
 	# open csv file to record data
-	f = open(logfile, "a")
-	writer = writer(f)
+	if path.exists(logfile):
+		f = open(logfile, "a")
+		writer = writer(f)
+	else:
+		f = open(logfile, "a")
+		writer = writer(f)
+		writer.writerow(["Time", "Value", "Over Threshold"])
+
 	record_time = datetime.now().strftime("%X")
 	writer.writerow([record_time, smoothed_value, threshold_flag])
-	f.close()
 
-open_csv_first(logfile)
+	f.close()
 
 # get standard time
 standard_time = datetime.now()
