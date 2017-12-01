@@ -69,15 +69,17 @@ def calc_timedelta(standard_time, sampling_period):
 
 	return timedelta
 
+def open_csv_first(logfile):
+	# open csv file to record data
+	if not path.exists(logfile, ):
+		f1 = open(logfile, "a")
+		writer1 = csv.writer(f)
+		writer1.writerow(["Time", "Value", "Over Threshold"])
+		f1.close()
+
 def write_to_csv(logfile, smoothed_value, threshold_flag):
 	# open csv file to record data
-	if path.exists(logfile):
-		f = open(logfile, "a")
-		writer = csv.writer(f)
-	else:
-		f = open(logfile, "a")
-		writer = csv.writer(f)
-		writer.writerow(["Time", "Value", "Over Threshold"])
+	writer.writerow(["Time", "Value", "Over Threshold"])
 
 	writer.writerow([datetime.now().strftime("%H:%M:%S.%f"), "%.3f" %(smoothed_value), threshold_flag])
 	# print(record_time, "%.3f" %(smoothed_value), threshold_flag)
@@ -86,6 +88,8 @@ def write_to_csv(logfile, smoothed_value, threshold_flag):
 
 # get standard time
 standard_time = datetime.now()
+
+open_csv_first(logfile)
 
 while True:
 	t1 = datetime.now()
