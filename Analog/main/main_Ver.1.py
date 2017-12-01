@@ -120,4 +120,5 @@ while True:
 	print("judge_threshold : ", t4 - t3)
 	print("write_to_csv : ", t5 - t4)
 	print("wait_time : ", t6 - t5)
+	print("total :",t6 - t1)
 	sleep(wait_time)
