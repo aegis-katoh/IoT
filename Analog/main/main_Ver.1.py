@@ -13,7 +13,7 @@ from datetime import timedelta
 # to sleep
 from time import sleep
 # to write data to csv file
-from csv import writer
+import csv
 # to run function per fixed time
 import signal
 
@@ -87,14 +87,15 @@ def write_to_csv(logfile, smoothed_value, threshold_flag):
 	# open csv file to record data
 	if path.exists(logfile):
 		f = open(logfile, "a")
-		writer = writer(f)
+		writer = csv.writer(f)
 	else:
 		f = open(logfile, "a")
-		writer = writer(f)
+		writer = csv.writer(f)
 		writer.writerow(["Time", "Value", "Over Threshold"])
 
 	record_time = datetime.now().strftime("%X")
 	writer.writerow([record_time, smoothed_value, threshold_flag])
+	print(record_time, smoothed_value, threshold_flag)
 
 	f.close()
 
