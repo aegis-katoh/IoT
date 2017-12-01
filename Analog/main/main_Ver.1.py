@@ -68,7 +68,7 @@ def smoothing(value_list, length):
 	return smoothed_value
 
 def judge_threshold(smoothed_value, threshold):
-	if (smoothed_value <= threshold):
+	if (smoothed_value >= threshold):
 		threshold_flag = True
 	else:
 		threshold_flag = False
@@ -93,7 +93,7 @@ def write_to_csv(logfile, smoothed_value, threshold_flag):
 		writer = csv.writer(f)
 		writer.writerow(["Time", "Value", "Over Threshold"])
 
-	record_time = datetime.now().strftime("%X")
+	record_time = datetime.now().strftime("%H:%M:%S.%f")
 	writer.writerow([record_time, smoothed_value, threshold_flag])
 	print(record_time, smoothed_value, threshold_flag)
 
