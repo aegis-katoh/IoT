@@ -20,7 +20,7 @@ import signal
 # initial setting
 # sampling rate [Hz]
 # maximum rate is 60[Hz] @ Raspberry Pi 3
-sampling_rate = 10
+sampling_rate = 200
 # sampling period [sec]
 sampling_period = timedelta(seconds = 1. / sampling_rate)
 # length of value list
@@ -94,19 +94,20 @@ open_csv_first(logfile)
 while True:
 	t1 = datetime.now()
 	value_list = get_sensor_value(channel, value_list, length)
-	t2 = datetime.now()
+	# t2 = datetime.now()
 	smoothed_value = smoothing(value_list, length)
-	t3 = datetime.now()
+	# t3 = datetime.now()
 	threshold_flag = judge_threshold(smoothed_value, threshold)
-	t4 = datetime.now()
+	# t4 = datetime.now()
 	write_to_csv(logfile, smoothed_value, threshold_flag)
-	t5 = datetime.now()
+	# t5 = datetime.now()
 	wait_time = sampling_period.total_seconds() - calc_timedelta(standard_time, sampling_period)
 	t6 = datetime.now()
-	print("get_sensor_value : ", t2 - t1)
-	print("smoothing : ", t3 - t2)
-	print("judge_threshold : ", t4 - t3)
-	print("write_to_csv : ", t5 - t4)
-	print("wait_time : ", t6 - t5)
+	# print("get_sensor_value : ", t2 - t1)
+	# print("smoothing : ", t3 - t2)
+	# print("judge_threshold : ", t4 - t3)
+	# print("write_to_csv : ", t5 - t4)
+	# print("wait_time : ", t6 - t5)
 	print("total :",t6 - t1)
+	print("wait time :", wait_time)
 	sleep(wait_time)
