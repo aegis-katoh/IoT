@@ -64,7 +64,7 @@ def get_sensor_value(channel, value_list, length):
 	return value_list
 
 def smoothing(value_list, length):
-	smoothed_value = float("{:.3f}".format(sum(value_list) / length))
+	smoothed_value = float("%.3f" %(sum(value_list) / length))
 	return smoothed_value
 
 def judge_threshold(smoothed_value, threshold):
